@@ -5,26 +5,24 @@ import IndividualDeckView from './screens/IndividualDeckView'
 import NewDeckView from './screens/NewDeckView'
 import NewQuestionView from './screens/NewQuestionView'
 import QuizView from './screens/QuizView'
-
+import { styles } from './styles/globalStyles'
+import Header from './screens/Header'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <DeckListView />
-      {/* <IndividualDeckView />
-      <QuizView />
-      <NewQuestionView />
-      <NewDeckView /> */}
+      <Header title={'Mobile Flashcards'} />
+      <View style={styles.content}>
+        <View style={styles.list} >
+          {/* <DeckListView /> */}
+          <IndividualDeckView deckTitle={'UniCard'} numOfCards={5} />
+          {/* <QuizView />
+          <NewQuestionView />
+          <NewDeckView /> */}
+
+        </View>
+      </View>
     </View>
 
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
