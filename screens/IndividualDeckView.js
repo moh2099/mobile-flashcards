@@ -9,11 +9,10 @@ export default function IndividualDeckView({ deckTitle, numOfCards, cards }) {
             <Text style={myStyles.title}>{deckTitle}</Text>
             <Text style={myStyles.numOfCards}>{numOfCards} cards</Text>
             <View style={myStyles.button} >
-                <Button title='Add Card' type="outline" buttonStyle={{ width:200, height:50, borderRadius: 30 }} />
+                <Button title='Add Card' type="outline" buttonStyle={{ width: 200, height: 50, borderRadius: 30 }} />
             </View>
             <View style={myStyles.button}>
-                <Button title='Start Quiz' buttonStyle={{ width: 200, height: 50, borderRadius: 10
-                }} />
+                <Button title='Start Quiz' buttonStyle={{ width: 200, height: 50, borderRadius: 10 }} />
             </View>
         </View>
     )
@@ -30,6 +29,7 @@ const myStyles = StyleSheet.create({
         paddingVertical: 60,
         fontSize: 25,
         alignSelf: 'center',
+        color: 'grey'
     },
     content: {
         paddingVertical: 100,
