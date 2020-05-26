@@ -1,15 +1,17 @@
-{/* 
+import { createDrawerNavigator } from 'react-navigation-drawer'
+import { createAppContainer } from 'react-navigation'
+import AddDecksNavigatorStack from './AddDeckStack'
+import DecksNavigatorStack from './DecksStack'
 
-DeckListView->  [  
+const screens = {
+    Decks: {
+        screen: DecksNavigatorStack
+    },
+    addDeck: {
+        screen: AddDecksNavigatorStack
+    }
+}
 
-    IndividualDeckView-> 
-                        [
-                             newQuestionView,
-                             QuizView
-                        ],  
+const RootNavigator = createDrawerNavigator(screens)
 
-                        [
-                            NewDeckView->IndividdualDeckView->...etc 
-                        ]
-                
-                ] */ }
+export default createAppContainer(RootNavigator)

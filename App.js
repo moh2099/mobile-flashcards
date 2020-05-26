@@ -8,7 +8,7 @@ import QuizView from './screens/QuizView'
 import { styles } from './styles/globalStyles'
 // import Header from './screens/Header'
 import { Header } from 'react-native-elements'
-
+import RootNavigator from './routes/drawerNavigator'
 
 export default function App() { //There are class components also
   return (
@@ -19,6 +19,7 @@ export default function App() { //There are class components also
         centerComponent={{ text: 'Mobile Flashcards', style: { fontSize: 23, color: '#fff' } }}
        // rightComponent={{ icon: 'home', color: '#fff' }}
       />
+      <RootNavigator />
       <View style={styles.content}>
         <View style={styles.list} >
           <DeckListView />
