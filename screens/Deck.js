@@ -7,7 +7,7 @@ const pressHandlder = () => {
 }
 
 export default function Deck({ title, numOfCards, navigationProp, questions }) { //NOTE: we passed navigation as props from DeckListView since this compoenent is not in the screen object in the DeckNavigatorStack, otherwise I shouldn't do that, instead I just access it directly as prop
-
+//This component is what viewed in the DeckListView, it is like a deck item
     let navigation = navigationProp;
     let deck = {
         title,

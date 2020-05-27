@@ -9,7 +9,7 @@ export default function IndividualDeckView({ navigation }) { //navigation passed
     let title = navigation.getParam('title')
     let numOfCards = navigation.getParam('numOfCards')
     let questions = navigation.getParam('questions') //This will not be accessable in the next component if it was not passed to it through navigation.navigate('component', passedVariable)
-    
+
     let quizQuestions = {
         questions,
     }
@@ -17,13 +17,17 @@ export default function IndividualDeckView({ navigation }) { //navigation passed
 
     return (
         <View style={myStyles.content}>
-            <Text style={myStyles.title}>{title}</Text>
-            <Text style={myStyles.numOfCards}>{numOfCards} cards</Text>
+            <View>
+                <Text style={myStyles.title}>{title}</Text>
+                <Text style={myStyles.numOfCards}>{numOfCards} cards</Text>
+
+            </View>
+
             <View style={myStyles.button} >
-                <Button title='Add Card' type="outline" onPress={() => navigation.navigate('NewQuestionView')} buttonStyle={{ width: 200, height: 50, borderRadius: 30 }} />
+                <Button title='Add Card' type="outline" onPress={() => navigation.navigate('NewQuestionView')} buttonStyle={{ borderColor:'black', borderWidth: 1, width: 200, height: 50, borderRadius: 30 }} />
             </View>
             <View style={myStyles.button}>
-                <Button title='Start Quiz' onPress={() => navigation.navigate('QuizView', quizQuestions )} buttonStyle={{ width: 200, height: 50, borderRadius: 10 }} />
+                <Button title='Start Quiz' onPress={() => navigation.navigate('QuizView', quizQuestions)} buttonStyle={{ width: 200, height: 50, borderRadius: 10 }} />
             </View>
         </View>
     )
@@ -47,6 +51,7 @@ const myStyles = StyleSheet.create({
         alignSelf: 'center'
     },
     button: {
+        alignSelf: 'center',
         margin: 5,
         paddingTop: 5
     }
