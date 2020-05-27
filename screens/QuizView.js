@@ -3,7 +3,10 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 import Card from './Card'
 
-export default function QuizView() {
+export default function QuizView({ navigation }) {
+
+    let questions = navigation.getParam('questions')
+     
     return (
         <View>
             {/* put the following block in FlatList where each card should has a count so that it appears in the Text compoenent below */}

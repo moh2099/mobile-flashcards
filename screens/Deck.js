@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-const pressHandlder = () => { 
+const pressHandlder = () => {
+    //console.log('y');
     //navigiate to individualDeckView, params: deckTitle, deckNumOfCards and cards(questions)
 }
 
-export default function DeckListView({ title, numOfCards }) {
+export default function Deck({ title, numOfCards, navigationProp, questions }) { //NOTE: we passed navigation as props from DeckListView since this compoenent is not in the screen object in the DeckNavigatorStack, otherwise I shouldn't do that, instead I just access it directly as prop
+
+    let navigation = navigationProp;
+    let deck = {
+        title,
+        numOfCards,
+        questions
+    }
     return (
-        <TouchableOpacity>
-            <View style={myListStyles.deckStyle} onPress={() => pressHandlder}>
+        <TouchableOpacity onPress={() => navigation.navigate('IndividualDeckView', deck)}>
+            {/* Note: since you cannpt use onPress on View component, you may use it with TouchableOpacity as alternative <TouchableOpacity onPress={() => console.log()} /> by wrapping View in it */}
+
+            <View style={myListStyles.deckStyle} >
                 <Text style={myListStyles.title}>{title}</Text>
                 <Text style={myListStyles.cardsNum}>{numOfCards} cards</Text>
             </View>
+
         </TouchableOpacity>
     )
 }

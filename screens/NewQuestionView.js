@@ -3,10 +3,10 @@ import { StyleSheet, Text, View, TouchableOpacity, TouchableWithoutFeedback, Key
 import { Button, Input } from 'react-native-elements';
 import { TextInput } from 'react-native-gesture-handler';
 
-export default function NewQuestionView() {
+export default function NewQuestionView({ navigation }) {
     const [questionText, setQuesionText] = useState()
     const [answerText, setAnswerText] = useState()
-
+      
     const addCard = ({ questionText, answerText }) => {
         console.log(questionText)
         console.log(answerText)

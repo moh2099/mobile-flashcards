@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { Button, Input } from 'react-native-elements';
 
-export default function NewQuestionView() {
+export default function NewDeckView({ navigation }) {
     const [deckTitle, setDeckTitle] = useState()
 
     const addDeck = ({ deckTitle }) => {
-        console.log(deckTitle)
+        let deck = {
+            title: deckTitle,
+            numOfCards : 0,
+            questions: {}
+        }
+         navigation.navigate('IndividualDeckView', deck)
     }
 
     return (
