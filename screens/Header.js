@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { gstyles } from '../styles/globalStyles'
 import { MaterialIcons } from '@expo/vector-icons';
 
 export default function Header({ title, navigation }) {

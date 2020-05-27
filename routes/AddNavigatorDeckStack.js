@@ -4,8 +4,6 @@ import NewDeckView from '../screens/NewDeckView'
 import IndividualDeckView from '../screens/IndividualDeckView'
 import NewQuestionView from '../screens/NewQuestionView'
 import QuizView from '../screens/QuizView'
-import { createAppContainer } from 'react-navigation'
-import { customHeaderStyles } from '../styles/header'
 import Header from '../screens/Header'
 
 const screens = { //note that this will pass navigation as props into every component passed to createStackNavigator so that it used to navigate between compoennts
