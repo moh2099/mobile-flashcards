@@ -10,14 +10,18 @@ export default function Card({ question, answer }) {
             <View style={myStyles.QuestionContainer}>
                 <Text style={myStyles.Question}>{question}</Text>
             </View>
-            <View>
-                <Text style={myStyles.Answer}> {placeholder} </Text>
-            </View>
+            
+            <TouchableOpacity  onPress={() => setPlaceholder(answer)}>
+                <View>
+                    <Text style={myStyles.Answer}> {placeholder} </Text>
+                </View>
+            </TouchableOpacity>
+
             <View style={myStyles.buttonCorrect} >
-                <Button onPress={() => setPlaceholder(answer)} title='Correct' buttonStyle={{ width: 200, height: 50, borderRadius: 30, backgroundColor: 'green' }} />
+                <Button title='Correct' buttonStyle={{ width: 200, height: 50, borderRadius: 30, backgroundColor: 'green' }} />
             </View>
             <View style={myStyles.buttonInCorrect}>
-                <Button onPress={() => setPlaceholder(answer)} title='Incorrect' buttonStyle={{ width: 200, height: 50, borderRadius: 30, backgroundColor: 'red' }} />
+                <Button title='Incorrect' buttonStyle={{ width: 200, height: 50, borderRadius: 30, backgroundColor: 'red' }} />
             </View>
         </View>
     )
