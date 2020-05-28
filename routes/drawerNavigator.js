@@ -15,6 +15,6 @@ const screens = {
     }
 }
 
-const RootNavigator = createDrawerNavigator(screens)
+const RootNavigator = createDrawerNavigator(screens, { drawerWidth: 150 }) // { drawerWidth: 150 } adjusts the drawer width
 
 export default createAppContainer(RootNavigator)

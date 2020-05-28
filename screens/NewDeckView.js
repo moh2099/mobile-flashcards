@@ -1,18 +1,33 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TouchableWithoutFeedback, Keyboard, AsyncStorage } from 'react-native';
 import { Button, Input } from 'react-native-elements';
+import { generateUID } from '../utils/data'
+import { saveDeckTitle } from '../utils/api'
+
 
 export default function NewDeckView({ navigation }) {
     const [deckTitle, setDeckTitle] = useState()
+    const [deckID, setDeckID] = useState(generateUID())
+
+    //console.log(navigation)
 
     const addDeck = ({ deckTitle }) => {
-        let deck = {
-            title: deckTitle,
-            numOfCards : 0,
-            questions: {}
+        setDeckID(generateUID())
+        let newDeck = {
+                id: deckID,
+                title: deckTitle,
+                questions: []
         }
-         navigation.navigate('IndividualDeckView', deck)
-    }
+        let deck = {
+            id: deckID,
+            title: deckTitle,
+            numOfCards: 0,
+            questions: [],
+            updateDecks: navigation.getScreenProps().setDecks             
+        }
+        saveDeckTitle(newDeck)
+        navigation.navigate('IndividualDeckView', deck)
+     }
 
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
