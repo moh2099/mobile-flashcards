@@ -1,6 +1,6 @@
 import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import { Button, Input } from 'react-native-elements';
+import { Button, Input, ButtonGroup } from 'react-native-elements';
 import { TextInput } from 'react-native-gesture-handler';
 import { generateUID } from '../utils/data'
 import { addCardToDeck, setup } from '../utils/api'
@@ -39,7 +39,9 @@ export default class NewQuestionView extends Component {
     state = {
         questionID: generateUID(),
         questionText: '',
-        answerText: ''
+        answerText: '',
+        selectedIndex: 0,
+        isCorrect: true
     }
 
 
@@ -61,7 +63,8 @@ export default class NewQuestionView extends Component {
                 deckID,
                 id: this.state.questionID,
                 question: this.state.questionText,
-                answer: this.state.answerText
+                answer: this.state.answerText,
+                isCorrect: this.state.isCorrect
             }
 
             addCardToDeck(newQuestion, setDecks)
@@ -86,6 +89,14 @@ export default class NewQuestionView extends Component {
                             placeholder={'A. Type the answer please'}
                             onChangeText={value => this.setState({ answerText: value })}
                             value={this.state.answerText}
+                        />
+                    </View>
+                    <View>
+                        <ButtonGroup
+                            onPress={(index) => index == 0 ? this.setState({ selectedIndex: 0, isCorrect: true }) : this.setState({ selectedIndex: 1, isCorrect: false })}
+                            selectedIndex={this.state.selectedIndex}
+                            buttons={['correct', 'incorrect']}
+                            containerStyle={{ height: 50 }}
                         />
                     </View>
                     <View style={myStyles.btnContainer}>

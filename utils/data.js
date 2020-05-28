@@ -37,7 +37,7 @@ export const initState = {
                 id: generateUID(),
                 question: 'What23gosure?',
                 answer: 'The combinati23gl environmen23glared.',
-                isCorrect: true
+                isCorrect: false
             },
             {
                 id: generateUID(),
@@ -49,7 +49,7 @@ export const initState = {
                 id: generateUID(),
                 question: 'what is msi ?',
                 answer: 'microStar, msi is a company which provides gaming laptops and PCs',
-                isCorrect: true
+                isCorrect: false
             }
         ]
     }

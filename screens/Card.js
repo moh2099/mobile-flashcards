@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
 
-export default function Card({ id, question, answer, sendAnswer }) {
+export default function Card({ id, question, answer, isCorrect, sendAnswer }) {
     const [placeholder, setPlaceholder] = useState('Answer')
     
     return (
@@ -17,10 +17,10 @@ export default function Card({ id, question, answer, sendAnswer }) {
             </TouchableOpacity>
 
             <View style={myStyles.buttonCorrect} >
-                <Button onPress={() => sendAnswer(id, 'correct')} title='Correct' buttonStyle={{ width: 200, height: 50, borderRadius: 30, backgroundColor: 'green' }} />
+                <Button onPress={() => sendAnswer(id, 'correct', isCorrect)} title='Correct' buttonStyle={{ width: 200, height: 50, borderRadius: 30, backgroundColor: 'green' }} />
             </View>
             <View style={myStyles.buttonInCorrect}>
-                <Button onPress={() => sendAnswer(id, 'incorrect')}  title='Incorrect' buttonStyle={{ width: 200, height: 50, borderRadius: 30, backgroundColor: 'red' }} />
+                <Button onPress={() => sendAnswer(id, 'incorrect', isCorrect)}  title='Incorrect' buttonStyle={{ width: 200, height: 50, borderRadius: 30, backgroundColor: 'red' }} />
             </View>
         </View>
     )

@@ -44,8 +44,8 @@ export const saveDeckTitle = (newDeck) => {
 
 export const addCardToDeck = (newQuestion, setDecks) => {
     //console.log(card.deckID)
-    let { deckID, id, question, answer } = newQuestion
-    let isCorrect = true
+    let { deckID, id, question, answer, isCorrect } = newQuestion
+    //let isCorrect = true
 
     AsyncStorage.getItem('data').then(res => {
         let data = JSON.parse(res)

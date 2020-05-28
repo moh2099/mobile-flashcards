@@ -18,25 +18,45 @@ export default function QuizView({ navigation }) {
 
     const [counter, setCounter] = useState() //counting asnwered questions
     const [answeredQuestions, setAnsweredQuestions] = useState([])
+    const [isAnswered, setIsAnswered] = useState(true)
+
     let answers = []
     let questions = navigation.getParam('questions')
     let deckID = navigation.getParam('deckID').deckID
 
-    const getAnswer = (qid, answer) => {
+    const getAnswer = (questionID, answer, isCorrect) => {
+    //    if (answers.length > 0) {
+          //  let n = []
+            // answers.map(obj => {
+            //     let qid = obj.id
+            //     let answer = obj.answer
 
-        answers.push({ [qid]: answer })
+            //     if (qid === questionID) {
+            //         console.log('The questions is already answered: ' + questionID)
+            //     } else {
+            //         n.push({ id: questionID, answer: answer })
+            //     }
+            // })
 
-        console.log('START');
-        
-        answers.map(obj => {
-            console.log(obj)
-            
-        })
-        console.log('END');
-        
+             answers.push({ id: questionID, answer: answer, isCorrect })
 
-        // console.log(answers.length)
-        //console.log(qid + ': ' + answer);
+            //REMOVING DUPLUCATE OBJECTS
+            var obj = {};
+            for (var i = 0, len = answers.length; i < len; i++)
+                obj[answers[i]['id']] = answers[i];
+
+            answers = new Array();
+            for (var key in obj)
+                answers.push(obj[key]);
+            //REMOVING DUPLUCATE OBJECTS
+
+
+        // } else {
+        //     //adding for the first time
+        //     answers.push({ id: questionID, answer: answer })
+        // }
+
+        console.log(answers) //Note now you can collect how many isCorrect = true questions so these are the correct questions
     }
 
 
@@ -54,7 +74,7 @@ export default function QuizView({ navigation }) {
                             questions.map(question => {
                                 return (
                                     <View key={deckID} style={styles.slideContainer}>
-                                        <Card sendAnswer={getAnswer} key={question} id={question.id} question={question.question} answer={question.answer} />
+                                        <Card key={question} sendAnswer={getAnswer} isCorrect={question.isCorrect} id={question.id} question={question.question} answer={question.answer} />
                                     </View>
                                 )
                             })
