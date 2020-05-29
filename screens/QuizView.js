@@ -16,39 +16,44 @@ const renderPagination = (index, total, context) => {
 
 export default function QuizView({ navigation }) {
 
-    const [counter, setCounter] = useState() //counting asnwered questions
-    const [answeredQuestions, setAnsweredQuestions] = useState([])
-    const [isAnswered, setIsAnswered] = useState(true)
-
+    // const [counter, setCounter] = useState() //counting asnwered questions
+    // const [answeredQuestions, setAnsweredQuestions] = useState([])
+    // const [isAnswered, setIsAnswered] = useState(true)
     let answers = []
     let questions = navigation.getParam('questions')
-    let deckID = navigation.getParam('deckID').deckID
+    let deckID = navigation.getParam('deckID')
+    
+    let quizQuestions = {
+        deckID,
+        questions,
+    }    
+    deckID = navigation.getParam('deckID').deckID
 
     const getAnswer = (questionID, answer, isCorrect) => {
-    //    if (answers.length > 0) {
-          //  let n = []
-            // answers.map(obj => {
-            //     let qid = obj.id
-            //     let answer = obj.answer
+        //    if (answers.length > 0) {
+        //  let n = []
+        // answers.map(obj => {
+        //     let qid = obj.id
+        //     let answer = obj.answer
 
-            //     if (qid === questionID) {
-            //         console.log('The questions is already answered: ' + questionID)
-            //     } else {
-            //         n.push({ id: questionID, answer: answer })
-            //     }
-            // })
+        //     if (qid === questionID) {
+        //         console.log('The questions is already answered: ' + questionID)
+        //     } else {
+        //         n.push({ id: questionID, answer: answer })
+        //     }
+        // })
 
-             answers.push({ id: questionID, answer: answer, isCorrect })
+        answers.push({ id: questionID, answer: answer, isCorrect })
 
-            //REMOVING DUPLUCATE OBJECTS
-            var obj = {};
-            for (var i = 0, len = answers.length; i < len; i++)
-                obj[answers[i]['id']] = answers[i];
+        //REMOVING DUPLUCATE OBJECTS
+        var obj = {};
+        for (var i = 0, len = answers.length; i < len; i++)
+            obj[answers[i]['id']] = answers[i];
 
-            answers = new Array();
-            for (var key in obj)
-                answers.push(obj[key]);
-            //REMOVING DUPLUCATE OBJECTS
+        answers = new Array();
+        for (var key in obj)
+            answers.push(obj[key]);
+        //REMOVING DUPLUCATE OBJECTS
 
 
         // } else {
@@ -56,8 +61,13 @@ export default function QuizView({ navigation }) {
         //     answers.push({ id: questionID, answer: answer })
         // }
 
-        console.log(answers) //Note now you can collect how many isCorrect = true questions so these are the correct questions
+        if (answers.length === questions.length) {
+            alert('Congrats: you have solved all the questions')
+            navigation.navigate('Results', { answers, quizQuestions })//to get it in getParam method, it needs to be as object since it will be destructured anyway
+        }
+        //Note now you can collect how many isCorrect = true questions so these are the correct questions
     }
+
 
 
     return (

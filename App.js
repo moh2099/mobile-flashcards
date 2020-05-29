@@ -11,6 +11,8 @@ export default function App() { //There are class components also
     //This is used instead of componentDidMount and there are other usages too for it ( userEffect mimics these lifecycle fucntions but do not replace them)
     //the second paramter in useEffect(1stPara, 2ndPara) is to tell react to render again if the paramater changed, and if there were no 2nd paramter then it will keep rendering infinitely. 
     //By passing in an empty array, we're telling React not to track any changes, only run once, effectively simulating componentDidMount.
+    
+    
     //deleteEverything()
     AsyncStorage.getItem('data').then(res => {
       if (res == null) {

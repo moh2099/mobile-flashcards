@@ -24,7 +24,8 @@ export default function IndividualDeckView({ navigation }) { //navigation passed
         deckID,
         questions,
     }
-
+    //console.log(quizQuestions);
+     
     return (
         <View style={myStyles.content}>
             <View>

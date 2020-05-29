@@ -6,7 +6,7 @@ import NewQuestionView from '../screens/NewQuestionView'
 import QuizView from '../screens/QuizView'
 import Header from '../screens/Header'
 import { Icon } from 'react-native-elements'
-
+import Results from '../screens/Results'
 
 const screens = { //note that this will pass navigation as props into every component passed to createStackNavigator so that it used to navigate between compoennts
 
@@ -56,6 +56,19 @@ const screens = { //note that this will pass navigation as props into every comp
         screen: QuizView,
         navigationOptions: {
             title: 'Quiz View',
+            headerTitleStyle: {
+                //You need add the flex first then the property textAlign would work
+                flex: 1,
+                textAlign: 'center',
+                fontWeight: 'bold',
+                paddingRight: 50
+            }
+        }
+    },
+    Results: {
+        screen: Results,
+        navigationOptions: {
+            title: 'Results',
             headerTitleStyle: {
                 //You need add the flex first then the property textAlign would work
                 flex: 1,
