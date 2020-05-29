@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, AsyncStorage } from 'react-native';
 import { Button } from 'react-native-elements';
 import Card from './Card'
-
+import { clearLocalNotification, setLocalNotification} from '../utils/NotificationHelper'
 
 export default function Results({ navigation }) {
 
@@ -29,6 +29,16 @@ export default function Results({ navigation }) {
                 counter++
             }
         })
+
+        //AsyncStorage.setItem('hasSolvedQuiz', JSON.stringify(true))
+        clearLocalNotification().then(
+            setLocalNotification
+        )
+        // AsyncStorage.getItem('hasSolvedQuiz').then(res => {
+        //     console.log(JSON.parse(res));
+            
+        // })
+        // AsyncStorage.setItem('hasSolvedQuiz', JSON.stringify(false))
 
         return (
             <View style={myStyles.Container}>

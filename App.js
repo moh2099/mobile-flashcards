@@ -3,11 +3,13 @@ import { View, AsyncStorage, Text } from 'react-native';
 import { styles } from './styles/globalStyles'
 import RootNavigator from './routes/drawerNavigator'
 import { setup, deleteEverything } from './utils/api'
+import { setLocalNotification } from './utils/NotificationHelper'
 
 export default function App() { //There are class components also
   const [decks, setDecks] = useState({})
   // const [decks, setDecks] = useState()
   useEffect(() => {
+    setLocalNotification()
     //This is used instead of componentDidMount and there are other usages too for it ( userEffect mimics these lifecycle fucntions but do not replace them)
     //the second paramter in useEffect(1stPara, 2ndPara) is to tell react to render again if the paramater changed, and if there were no 2nd paramter then it will keep rendering infinitely. 
     //By passing in an empty array, we're telling React not to track any changes, only run once, effectively simulating componentDidMount.
