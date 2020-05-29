@@ -68,7 +68,7 @@ export default class NewQuestionView extends Component {
             }
 
             addCardToDeck(newQuestion, setDecks)
-            navigation.navigate('DeckListView')
+            navigation.pop()
         }
         return (
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
